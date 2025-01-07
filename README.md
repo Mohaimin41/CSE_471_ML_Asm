@@ -1,4 +1,8 @@
+<h2><b><p align="center">  Robust Prompt Optimization for Defending Language <br/>Models Against Jailbreaking Attacks </p></b></h2>
+
 ### I. Introduction
+
+Imagine running an AI company. Your new LLM is all the rage in the tech sphere. Suddenly records of your LLM being tricked becomes viral. For some carefully crafted prompt, it seems your LLM will tell anything, giving malicious, harmful and/or toxic responses. Your investment in training, securing and testing your LLM seems to go to waste now. But what if there is a very simple solution? What if, by adding a few special tokens to your LLM's prompts, it seems that it can be always forced to answer as aligned, not giving attacking prompts any chance? In this paper the authors explore this interesting idea.
 
 #### Problem Statement
 
@@ -83,7 +87,7 @@ Through these contributions, RPO sets a new standard for defending large languag
 
 The experimental evaluation of Robust Prompt Optimization (RPO) was conducted using two prominent benchmarks, **JailbreakBench** and **HarmBench**, which test the robustness of language models (LLMs) against adversarial attacks. The benchmarks include various attack types designed to bypass alignment safeguards and induce harmful or unintended behaviors in LLMs.
 
----
+
 
 #### **Attack Types Overview**
 
@@ -116,7 +120,7 @@ The experimental evaluation of Robust Prompt Optimization (RPO) was conducted us
   - Leverages few-shot learning principles to condition the LLM to accept harmful behaviors by showcasing adversarial demonstrations.
   - *Example*: Providing examples of seemingly harmless questions that elicit unsafe responses, then asking a similar harmful question.
 
----
+
 
 #### **Dataset Statistics**
 
@@ -139,7 +143,7 @@ The experimental evaluation of Robust Prompt Optimization (RPO) was conducted us
   - **Persuasive Adversarial Prompt (PAP):** 40 test cases.
 - **Purpose:** Tests transferability and robustness of defenses to unseen attacks and contextual challenges.
 
----
+
 
 #### **1. JailbreakBench Results**
 
@@ -163,7 +167,7 @@ RPO significantly outperformed baseline defenses, including SmoothLLM, perplexit
 |            | GPT-4            | 50%            | 25%            | 43%                  | 10%          | **6%**         |
 | GCG        | All Tested Models| 58%-0%         | 1%-0%          | 1%-0%                | 4%-0%        | **0%**         |
 
----
+
 
 #### **2. HarmBench Results**
 
@@ -184,7 +188,7 @@ HarmBench introduces broader attack categories, such as copyright violations and
 | GPT-4            | 22.3%   | 0.5%        | 33.8%    | 37.6%   | 9.3%         | 11.6%   | 19.2%       |
 | **+ RPO**        | 9.0%    | 0.2%        | 31.2%    | 35.8%   | 7.0%         | 10.9%   | **15.7%**   |
 
----
+
 
 #### **3. Adaptive Attacks**
 
@@ -195,7 +199,7 @@ Adaptive attacks, where adversaries have white-box access to the defense, demons
 
 Adaptive attacks present a critical challenge as they simulate adversaries with knowledge of the defense mechanism. The results highlight RPO's resilience, as it maintained low ASR even in scenarios with iterative refinement or adversarial optimization targeting the defense itself. This suggests that RPO's robustness stems from its ability to create generalizable defenses that adapt dynamically to adversarial inputs.
 
----
+
 
 #### **4. Practicality and Impact**
 
@@ -211,7 +215,7 @@ These insights reinforce RPO's role as a practical, adaptable, and efficient def
 
 
 
-### IV. Limitations
+### IV. Observations, Limitations and Insights
 
 While Robust Prompt Optimization (RPO) represents a significant advancement in defending large language models (LLMs) against adversarial jailbreaking attacks, the paper acknowledges certain limitations that must be addressed to fully realize its potential. These limitations primarily relate to the scope of applicability and the potential arms race between adversaries and defenders.
 
@@ -222,6 +226,7 @@ RPO's current implementation is designed to defend against text-based adversaria
 - Agent-Based Systems: Many AI applications involve agent-based frameworks, where the language model interacts with external tools, APIs, or environments (e.g., AutoGPT). Adversarial manipulations in such systems can occur not just at the input prompt but also through external instructions or environmental cues. RPO is not designed to defend against these multifaceted attack vectors.
 - Malicious Outputs Beyond Jailbreaking: RPO focuses on adversarial prompts that aim to manipulate model responses (e.g., harmful advice or rule violations). However, other types of adversarial outputs, such as deceptive text, misinformation, or unethical content generation, are outside its scope. For example, an adversary might use RPO-defended models to generate realistic phishing emails or disinformation campaigns without explicitly triggering jailbreaking attacks.
 - Computational Costs for Fine-Tuning: Although the defensive suffix is lightweight and transferable, the optimization process to generate it involves computational overhead. Extending this approach to more diverse scenarios might require additional fine-tuning, which could be resource-intensive.
+- Interesting Failure Case: A small amount of benign prompts failed outright due to the presence of the RPO token in them. The paper acknowledges this issue and predicts that meaningful/semantically valid suffixes could be generated to counter this issue.
 
 #### Potential Arms Race
 
