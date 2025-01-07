@@ -2,7 +2,7 @@
 
 ### I. Introduction
 
-Imagine running an AI company. Your new LLM is all the rage in the tech sphere. Suddenly records of your LLM being tricked becomes viral. For some carefully crafted prompt, it seems your LLM will tell anything, giving malicious, harmful and/or toxic responses. Your investment in training, securing and testing your LLM seems to go to waste now. But what if there is a very simple solution? What if, by adding a few special tokens to your LLM's prompts, it seems that it can be always forced to answer as aligned, not giving attacking prompts any chance? In this paper the authors explore this interesting idea.
+Imagine running an AI company. Your new LLM is all the rage in the tech sphere. Suddenly records of your LLM being tricked becomes viral. For some carefully crafted prompt, it seems your LLM will tell anything, giving malicious, harmful and/or toxic responses. Your investment in training, securing and testing your LLM seems to go to waste now. But what if there is a very simple solution? What if, by adding a few special tokens to your LLM's prompts, it can be always forced to answer as aligned, not giving attacking prompts any chance? In this paper the authors explore this interesting idea.
 
 #### Problem Statement
 
